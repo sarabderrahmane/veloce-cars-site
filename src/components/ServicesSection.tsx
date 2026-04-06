@@ -446,7 +446,6 @@ export default function ServicesSection() {
         }
         @media (max-width: 767px) {
           .services-section { padding: 50px 0 !important; }
-          .services-container { padding: 0 16px !important; }
           .filter-bar { flex-direction: column; }
           .filter-bar select { border-right: none !important; border-bottom: 1px solid #2A2A2A; padding: 14px 16px !important; font-size: 14px !important; }
           .filter-bar button { padding: 14px 20px !important; }

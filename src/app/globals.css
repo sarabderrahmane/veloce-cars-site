@@ -277,6 +277,12 @@
    MOBILE RESPONSIVE
    ============================================================ */
 @media (max-width: 767px) {
+  section > div,
+  footer > div > div {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
   .btn-primary {
     font-size: 11px;
     padding: 12px 20px;

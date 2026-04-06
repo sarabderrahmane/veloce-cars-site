@@ -220,7 +220,7 @@ export default function AboutSection() {
         @media (max-width: 767px) {
           .about-section { padding: 50px 0 !important; }
           .about-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
-          .about-images { height: 300px !important; }
+          .about-images { height: 250px !important; overflow: hidden !important; }
         }
       `}</style>
     </section>
