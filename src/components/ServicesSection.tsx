@@ -154,29 +154,36 @@ export default function ServicesSection() {
             { label: "Budget", options: ["< 4 000 000 DA", "4–6 000 000 DA", "6–9 000 000 DA", "> 9 000 000 DA"] },
             { label: "Carrosserie", options: ["Berline", "SUV", "Break", "Coupé"] },
           ].map((filter, i, arr) => (
-            <select
-              key={filter.label}
-              defaultValue=""
-              style={{
-                flex: 1,
-                padding: "16px 20px",
-                background: "transparent",
-                border: "none",
-                borderRight: i < arr.length - 1 ? "1px solid #2A2A2A" : "none",
-                color: "#8A8A8A",
-                fontFamily: "var(--font-montserrat), Arial, sans-serif",
-                fontSize: "13px",
-                cursor: "pointer",
-                outline: "none",
-              }}
-            >
-              <option value="" disabled>{filter.label}</option>
-              {filter.options.map((opt) => (
-                <option key={opt} value={opt} style={{ background: "#111" }}>{opt}</option>
-              ))}
-            </select>
+            <div key={filter.label} className="filter-item" style={{ flex: 1, position: "relative", borderRight: i < arr.length - 1 ? "1px solid #2A2A2A" : "none" }}>
+              <select
+                defaultValue=""
+                className="filter-select"
+                style={{
+                  width: "100%",
+                  padding: "16px 36px 16px 20px",
+                  background: "transparent",
+                  border: "none",
+                  color: "#8A8A8A",
+                  fontFamily: "var(--font-montserrat), Arial, sans-serif",
+                  fontSize: "13px",
+                  cursor: "pointer",
+                  outline: "none",
+                  WebkitAppearance: "none",
+                  MozAppearance: "none",
+                  appearance: "none",
+                }}
+              >
+                <option value="" disabled>{filter.label}</option>
+                {filter.options.map((opt) => (
+                  <option key={opt} value={opt} style={{ background: "#111", color: "#ccc" }}>{opt}</option>
+                ))}
+              </select>
+              {/* Custom arrow */}
+              <span style={{ position: "absolute", right: "14px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "#D4AF37", fontSize: "10px" }}>▼</span>
+            </div>
           ))}
           <button
+            className="filter-btn"
             style={{
               background: "linear-gradient(135deg, #D4AF37, #C5A059)",
               color: "#000000",
@@ -446,9 +453,33 @@ export default function ServicesSection() {
         }
         @media (max-width: 767px) {
           .services-section { padding: 50px 0 !important; }
-          .filter-bar { flex-direction: column; }
-          .filter-bar select { border-right: none !important; border-bottom: 1px solid #2A2A2A; padding: 14px 16px !important; font-size: 14px !important; }
-          .filter-bar button { padding: 14px 20px !important; }
+          .filter-bar {
+            flex-direction: column !important;
+            border: none !important;
+            background: transparent !important;
+            gap: 10px !important;
+          }
+          .filter-item {
+            border-right: none !important;
+            border: 1px solid #2A2A2A !important;
+            border-radius: 8px !important;
+            background-color: #111 !important;
+            overflow: hidden;
+          }
+          .filter-select {
+            padding: 16px 40px 16px 16px !important;
+            font-size: 15px !important;
+            color: #aaa !important;
+            border-radius: 8px !important;
+          }
+          .filter-btn {
+            border-radius: 8px !important;
+            padding: 16px 20px !important;
+            width: 100% !important;
+            text-align: center !important;
+            justify-content: center !important;
+            display: flex !important;
+          }
           .service-grid { grid-template-columns: 1fr !important; }
           .service-grid a { grid-column: 1 !important; height: 200px !important; }
           .carousel-wrapper { overflow-x: auto !important; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
