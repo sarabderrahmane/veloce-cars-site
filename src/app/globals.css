@@ -165,7 +165,7 @@
 /* Headings containing highlights need extra line-height to prevent overlap */
 h1:has(.highlight-red, .highlight-gold),
 h2:has(.highlight-red, .highlight-gold) {
-  line-height: 1.35 !important;
+  line-height: 1.5 !important;
 }
 
 /* ============================================================
