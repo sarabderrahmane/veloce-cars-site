@@ -1,0 +1,272 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-montserrat);
+  --font-heading: var(--font-michroma);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+/* ============================================================
+   VELOCE CARS — Design Tokens
+   ============================================================ */
+:root {
+  /* Brand colors */
+  --vc-gold: #D4AF37;
+  --vc-gold-dark: #C5A059;
+  --vc-gold-gradient: linear-gradient(135deg, #D4AF37, #C5A059);
+  --vc-black: #000000;
+  --vc-dark: #0A0A0A;
+  --vc-dark-alt: #111111;
+  --vc-dark-card: #161616;
+  --vc-dark-border: #2A2A2A;
+  --vc-gray: #8A8A8A;
+  --vc-gray-light: #B0B0B0;
+  --vc-white: #FFFFFF;
+
+  /* shadcn tokens */
+  --background: oklch(0.06 0 0);
+  --foreground: oklch(0.85 0 0);
+  --card: oklch(0.09 0 0);
+  --card-foreground: oklch(0.85 0 0);
+  --popover: oklch(0.09 0 0);
+  --popover-foreground: oklch(0.85 0 0);
+  --primary: oklch(0.76 0.11 85);        /* ~#D4AF37 gold */
+  --primary-foreground: oklch(0.06 0 0);
+  --secondary: oklch(0.12 0 0);
+  --secondary-foreground: oklch(0.85 0 0);
+  --muted: oklch(0.12 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: oklch(0.12 0 0);
+  --accent-foreground: oklch(0.85 0 0);
+  --destructive: oklch(0.55 0.18 27);
+  --border: oklch(0.2 0 0);
+  --input: oklch(0.2 0 0);
+  --ring: oklch(0.76 0.11 85);
+  --radius: 0.25rem;
+  --chart-1: oklch(0.76 0.11 85);
+  --chart-2: oklch(0.65 0.09 85);
+  --chart-3: oklch(0.5 0.07 85);
+  --chart-4: oklch(0.35 0 0);
+  --chart-5: oklch(0.2 0 0);
+  --sidebar: oklch(0.09 0 0);
+  --sidebar-foreground: oklch(0.85 0 0);
+  --sidebar-primary: oklch(0.76 0.11 85);
+  --sidebar-primary-foreground: oklch(0.06 0 0);
+  --sidebar-accent: oklch(0.12 0 0);
+  --sidebar-accent-foreground: oklch(0.85 0 0);
+  --sidebar-border: oklch(0.2 0 0);
+  --sidebar-ring: oklch(0.76 0.11 85);
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-montserrat), Arial, sans-serif;
+    color: #8A8A8A;
+    background-color: #000;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-montserrat), Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #8A8A8A;
+    background-color: #000;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-michroma), var(--font-montserrat), Arial, sans-serif;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  /* Gold scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #0A0A0A; }
+  ::-webkit-scrollbar-thumb { background: #D4AF37; }
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.font-heading {
+  font-family: var(--font-michroma), var(--font-montserrat), Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.font-body {
+  font-family: var(--font-montserrat), Arial, sans-serif;
+}
+
+/* Gold highlight span — used in headings */
+.highlight-gold {
+  background: linear-gradient(135deg, #D4AF37, #C5A059);
+  color: #000000;
+  padding: 1px 4px;
+  display: inline;
+}
+
+/* Keep old class name for compatibility */
+.highlight-red {
+  background: linear-gradient(135deg, #D4AF37, #C5A059);
+  color: #000000;
+  padding: 1px 4px;
+  display: inline;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wow { animation-duration: 0.8s; animation-fill-mode: both; }
+.fadeInUp { animation-name: fadeInUp; }
+
+/* ============================================================
+   BACKGROUND LINES — decorative vertical gold lines
+   ============================================================ */
+.bkg-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  z-index: 0;
+}
+
+.bkg-lines-line {
+  flex: 1;
+  background: linear-gradient(#D4AF37, rgba(0, 0, 0, 0));
+  opacity: 0.04;
+}
+
+/* ============================================================
+   SECTION BASE
+   ============================================================ */
+.section-dark {
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+}
+
+.section-light {
+  background-color: #111111;
+  color: #8A8A8A;
+}
+
+/* ============================================================
+   BUTTON STYLES
+   ============================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #D4AF37, #C5A059);
+  color: #000000;
+  font-family: var(--font-michroma), var(--font-montserrat), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #D4AF37;
+  font-family: var(--font-michroma), var(--font-montserrat), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border: 1.5px solid #D4AF37;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: linear-gradient(135deg, #D4AF37, #C5A059);
+  border-color: #D4AF37;
+  color: #000000;
+}
+
+.btn-filled-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #111111;
+  color: #D4AF37;
+  font-family: var(--font-michroma), var(--font-montserrat), Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border: 1.5px solid #2A2A2A;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
