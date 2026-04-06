@@ -152,19 +152,16 @@
 }
 
 /* Gold highlight span — used in headings */
-.highlight-gold {
-  background: linear-gradient(135deg, #D4AF37, #C5A059);
-  color: #000000;
-  padding: 1px 4px;
-  display: inline;
-}
-
-/* Keep old class name for compatibility */
+.highlight-gold,
 .highlight-red {
   background: linear-gradient(135deg, #D4AF37, #C5A059);
   color: #000000;
-  padding: 1px 4px;
+  padding: 0 5px;
+  margin: 0 1px;
   display: inline;
+  line-height: inherit;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 /* ============================================================
