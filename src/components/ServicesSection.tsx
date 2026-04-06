@@ -40,14 +40,14 @@ const serviceTiles = [
 ];
 
 const vehicles = [
-  { id: "byd-han", name: "BYD HAN EV", image: "/images/vehicles/ferrari-458.jpg", href: "/catalogue", type: "Électrique" },
-  { id: "zeekr-001", name: "ZEEKR 001", image: "/images/vehicles/audi-r8.jpg", href: "/catalogue", type: "Électrique" },
-  { id: "li-l9", name: "LI AUTO L9", image: "/images/vehicles/rolls-phantom.jpg", href: "/catalogue", type: "Hybride" },
-  { id: "byd-yangwang", name: "YANGWANG U8", image: "/images/vehicles/lamborghini-urus.jpg", href: "/catalogue", type: "Hybride" },
-  { id: "avatr-11", name: "AVATR 11", image: "/images/vehicles/bmw-m5.jpg", href: "/catalogue", type: "Électrique" },
-  { id: "zeekr-x", name: "ZEEKR X", image: "/images/vehicles/ferrari-portofino.jpg", href: "/catalogue", type: "Électrique" },
-  { id: "byd-seal", name: "BYD SEAL", image: "/images/vehicles/porsche-992.jpg", href: "/catalogue", type: "Électrique" },
-  { id: "li-l7", name: "LI AUTO L7", image: "/images/vehicles/aston-dbs.jpg", href: "/catalogue", type: "Hybride" },
+  { id: "byd-han", name: "BYD HAN EV", image: "/images/vehicles/ferrari-458.jpg", href: "/catalogue", type: "Électrique", brand: "BYD", body: "Berline" },
+  { id: "zeekr-001", name: "ZEEKR 001", image: "/images/vehicles/audi-r8.jpg", href: "/catalogue", type: "Électrique", brand: "Zeekr", body: "Berline" },
+  { id: "li-l9", name: "LI AUTO L9", image: "/images/vehicles/rolls-phantom.jpg", href: "/catalogue", type: "Hybride", brand: "Li Auto", body: "SUV" },
+  { id: "byd-yangwang", name: "YANGWANG U8", image: "/images/vehicles/lamborghini-urus.jpg", href: "/catalogue", type: "Hybride", brand: "BYD", body: "SUV" },
+  { id: "avatr-11", name: "AVATR 11", image: "/images/vehicles/bmw-m5.jpg", href: "/catalogue", type: "Électrique", brand: "Avatr", body: "SUV" },
+  { id: "zeekr-x", name: "ZEEKR X", image: "/images/vehicles/ferrari-portofino.jpg", href: "/catalogue", type: "Électrique", brand: "Zeekr", body: "SUV" },
+  { id: "byd-seal", name: "BYD SEAL", image: "/images/vehicles/porsche-992.jpg", href: "/catalogue", type: "Électrique", brand: "BYD", body: "Berline" },
+  { id: "li-l7", name: "LI AUTO L7", image: "/images/vehicles/aston-dbs.jpg", href: "/catalogue", type: "Hybride", brand: "Li Auto", body: "SUV" },
 ];
 
 const VISIBLE = 4;
@@ -56,10 +56,29 @@ const GAP = 16;
 
 export default function ServicesSection() {
   const [index, setIndex] = useState(0);
-  const maxIndex = vehicles.length - VISIBLE;
+  const [filters, setFilters] = useState({ type: "", brand: "", body: "" });
+
+  const filtered = vehicles.filter((v) => {
+    if (filters.type && v.type !== filters.type) return false;
+    if (filters.brand && v.brand !== filters.brand) return false;
+    if (filters.body && v.body !== filters.body) return false;
+    return true;
+  });
+
+  const maxIndex = Math.max(0, filtered.length - VISIBLE);
 
   const prev = () => setIndex((i) => Math.max(0, i - 1));
   const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
+
+  const handleFilter = (key: string, value: string) => {
+    setFilters((f) => ({ ...f, [key]: value }));
+    setIndex(0);
+  };
+
+  const resetFilters = () => {
+    setFilters({ type: "", brand: "", body: "" });
+    setIndex(0);
+  };
 
   return (
     <section
@@ -149,21 +168,21 @@ export default function ServicesSection() {
           }}
         >
           {[
-            { label: "Type de motorisation", options: ["Électrique", "Hybride rechargeable", "Hybride", "Thermique"] },
-            { label: "Marque", options: ["BYD", "Zeekr", "Li Auto", "Avatr", "NIO", "AITO"] },
-            { label: "Budget", options: ["< 4 000 000 DA", "4–6 000 000 DA", "6–9 000 000 DA", "> 9 000 000 DA"] },
-            { label: "Carrosserie", options: ["Berline", "SUV", "Break", "Coupé"] },
+            { key: "type", label: "Type de motorisation", options: ["Électrique", "Hybride"] },
+            { key: "brand", label: "Marque", options: ["BYD", "Zeekr", "Li Auto", "Avatr"] },
+            { key: "body", label: "Carrosserie", options: ["Berline", "SUV"] },
           ].map((filter, i, arr) => (
-            <div key={filter.label} className="filter-item" style={{ flex: 1, position: "relative", borderRight: i < arr.length - 1 ? "1px solid #2A2A2A" : "none" }}>
+            <div key={filter.key} className="filter-item" style={{ flex: 1, position: "relative", borderRight: i < arr.length - 1 ? "1px solid #2A2A2A" : "none" }}>
               <select
-                defaultValue=""
+                value={filters[filter.key as keyof typeof filters]}
+                onChange={(e) => handleFilter(filter.key, e.target.value)}
                 className="filter-select"
                 style={{
                   width: "100%",
                   padding: "16px 36px 16px 20px",
                   background: "transparent",
                   border: "none",
-                  color: "#8A8A8A",
+                  color: filters[filter.key as keyof typeof filters] ? "#D4AF37" : "#8A8A8A",
                   fontFamily: "var(--font-montserrat), Arial, sans-serif",
                   fontSize: "13px",
                   cursor: "pointer",
@@ -173,20 +192,20 @@ export default function ServicesSection() {
                   appearance: "none",
                 }}
               >
-                <option value="" disabled>{filter.label}</option>
+                <option value="">{filter.label}</option>
                 {filter.options.map((opt) => (
                   <option key={opt} value={opt} style={{ background: "#111", color: "#ccc" }}>{opt}</option>
                 ))}
               </select>
-              {/* Custom arrow */}
               <span style={{ position: "absolute", right: "14px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "#D4AF37", fontSize: "10px" }}>▼</span>
             </div>
           ))}
           <button
             className="filter-btn"
+            onClick={resetFilters}
             style={{
-              background: "linear-gradient(135deg, #D4AF37, #C5A059)",
-              color: "#000000",
+              background: (filters.type || filters.brand || filters.body) ? "linear-gradient(135deg, #D4AF37, #C5A059)" : "#2A2A2A",
+              color: (filters.type || filters.brand || filters.body) ? "#000000" : "#8A8A8A",
               padding: "16px 32px",
               border: "none",
               fontFamily: "var(--font-michroma), Arial, sans-serif",
@@ -196,9 +215,10 @@ export default function ServicesSection() {
               textTransform: "uppercase",
               cursor: "pointer",
               whiteSpace: "nowrap",
+              transition: "all 0.2s ease",
             }}
           >
-            RECHERCHER
+            {(filters.type || filters.brand || filters.body) ? "RÉINITIALISER" : "RECHERCHER"}
           </button>
         </div>
 
@@ -354,6 +374,13 @@ export default function ServicesSection() {
             </div>
           </div>
 
+          {filtered.length === 0 && (
+            <p style={{ fontFamily: "var(--font-montserrat)", fontSize: "14px", color: "#8A8A8A", textAlign: "center", padding: "40px 0" }}>
+              Aucun véhicule ne correspond à vos critères.{" "}
+              <button onClick={resetFilters} style={{ background: "none", border: "none", color: "#D4AF37", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", textDecoration: "underline" }}>Réinitialiser les filtres</button>
+            </p>
+          )}
+
           <div className="carousel-wrapper" style={{ overflow: "hidden" }}>
             <div
               className="carousel-track"
@@ -364,7 +391,7 @@ export default function ServicesSection() {
                 transform: `translateX(-${index * (CARD_WIDTH + GAP)}px)`,
               }}
             >
-              {vehicles.map((v) => (
+              {filtered.map((v) => (
                 <Link
                   key={v.id}
                   href={v.href}
