@@ -154,12 +154,22 @@
 /* Gold highlight span — used in headings */
 .highlight-gold,
 .highlight-red {
-  background: linear-gradient(135deg, #D4AF37, #C5A059);
+  position: relative;
   color: #000000;
   padding: 0 5px;
-  line-height: 0.75;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
+  z-index: 1;
+}
+
+.highlight-gold::before,
+.highlight-red::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 15%;
+  bottom: 10%;
+  background: linear-gradient(135deg, #D4AF37, #C5A059);
+  z-index: -1;
 }
 
 /* ============================================================
