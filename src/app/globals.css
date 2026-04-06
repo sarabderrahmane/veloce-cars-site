@@ -157,7 +157,7 @@
   background: linear-gradient(135deg, #D4AF37, #C5A059);
   color: #000000;
   padding: 0 5px;
-  line-height: 0.9;
+  line-height: 0.75;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
