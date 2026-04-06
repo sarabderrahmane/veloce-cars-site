@@ -82,6 +82,7 @@ export default function Header() {
               <span style={{ display: "block", height: "2px", backgroundColor: "#D4AF37", transition: "all 0.3s ease", transform: menuOpen ? "translateY(-7px) rotate(-45deg)" : "none", width: "28px" }} />
             </div>
             <span
+              className="menu-label"
               style={{
                 fontFamily: "var(--font-michroma), Arial, sans-serif",
                 fontWeight: 400,
@@ -98,6 +99,7 @@ export default function Header() {
           {/* Center: Logo */}
           <Link
             href="/"
+            className="header-logo"
             style={{
               position: "absolute",
               left: "50%",
@@ -110,6 +112,7 @@ export default function Header() {
             }}
           >
             <span
+              className="header-logo-text"
               style={{
                 fontFamily: "var(--font-michroma), Arial, sans-serif",
                 fontSize: "22px",
@@ -125,6 +128,7 @@ export default function Header() {
               VELOCE
             </span>
             <span
+              className="header-logo-sub"
               style={{
                 fontFamily: "var(--font-montserrat), Arial, sans-serif",
                 fontSize: "9px",
@@ -260,6 +264,7 @@ export default function Header() {
 
         {/* Phone numbers */}
         <div
+          className="menu-phones"
           style={{
             position: "absolute",
             bottom: "40px",
@@ -295,6 +300,20 @@ export default function Header() {
       <style>{`
         @media (max-width: 1023px) {
           .header-ctas { display: none !important; }
+        }
+        @media (max-width: 767px) {
+          .menu-label { display: none !important; }
+          .header-logo-text { font-size: 18px !important; letter-spacing: 0.15em !important; }
+          .header-logo-sub { font-size: 7px !important; letter-spacing: 0.4em !important; }
+          .menu-phones {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 16px !important;
+            bottom: 30px !important;
+          }
+          .menu-phones a {
+            font-size: 12px !important;
+          }
         }
       `}</style>
     </>

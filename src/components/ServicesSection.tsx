@@ -64,6 +64,7 @@ export default function ServicesSection() {
   return (
     <section
       id="pourquoi"
+      className="services-section"
       style={{
         backgroundColor: "#0A0A0A",
         position: "relative",
@@ -79,6 +80,7 @@ export default function ServicesSection() {
       </div>
 
       <div
+        className="services-container"
         style={{
           maxWidth: "1400px",
           margin: "0 auto",
@@ -345,8 +347,9 @@ export default function ServicesSection() {
             </div>
           </div>
 
-          <div style={{ overflow: "hidden" }}>
+          <div className="carousel-wrapper" style={{ overflow: "hidden" }}>
             <div
+              className="carousel-track"
               style={{
                 display: "flex",
                 gap: `${GAP}px`,
@@ -438,11 +441,21 @@ export default function ServicesSection() {
         .service-tile:hover .tile-accent { opacity: 1 !important; }
         .vehicle-card:hover .card-img { transform: scale(1.05); }
         .vehicle-card:hover { border-color: #D4AF37 !important; }
+        @media (max-width: 1023px) {
+          .services-section { padding: 70px 0 !important; }
+        }
         @media (max-width: 767px) {
+          .services-section { padding: 50px 0 !important; }
+          .services-container { padding: 0 16px !important; }
           .filter-bar { flex-direction: column; }
-          .filter-bar select { border-right: none !important; border-bottom: 1px solid #2A2A2A; }
+          .filter-bar select { border-right: none !important; border-bottom: 1px solid #2A2A2A; padding: 14px 16px !important; font-size: 14px !important; }
+          .filter-bar button { padding: 14px 20px !important; }
           .service-grid { grid-template-columns: 1fr !important; }
-          .service-grid a { grid-column: 1 !important; }
+          .service-grid a { grid-column: 1 !important; height: 200px !important; }
+          .carousel-wrapper { overflow-x: auto !important; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+          .carousel-wrapper::-webkit-scrollbar { display: none; }
+          .carousel-track { transform: none !important; }
+          .vehicle-card { width: 250px !important; min-width: 250px !important; }
         }
       `}</style>
     </section>

@@ -3,6 +3,7 @@ import Image from "next/image";
 export default function AboutSection() {
   return (
     <section
+      className="about-section"
       style={{
         backgroundColor: "#111111",
         padding: "100px 0",
@@ -213,11 +214,13 @@ export default function AboutSection() {
 
       <style>{`
         @media (max-width: 1023px) {
+          .about-section { padding: 70px 0 !important; }
           .about-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
         }
         @media (max-width: 767px) {
-          .about-grid { grid-template-columns: 1fr !important; }
-          .about-images { height: 280px !important; }
+          .about-section { padding: 50px 0 !important; }
+          .about-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+          .about-images { height: 300px !important; }
         }
       `}</style>
     </section>

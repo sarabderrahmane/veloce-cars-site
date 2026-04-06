@@ -15,6 +15,7 @@ const FACEBOOK_URL = "https://www.facebook.com/velocecars";
 export default function InstagramSection() {
   return (
     <section
+      className="insta-section"
       style={{
         backgroundColor: "#0A0A0A",
         padding: "100px 0",
@@ -164,7 +165,11 @@ export default function InstagramSection() {
       <style>{`
         .insta-tile:hover .insta-img { transform: scale(1.06); filter: brightness(0.6) !important; }
         .insta-tile:hover .insta-overlay { opacity: 1 !important; }
+        @media (max-width: 1023px) {
+          .insta-section { padding: 70px 0 !important; }
+        }
         @media (max-width: 767px) {
+          .insta-section { padding: 50px 0 !important; }
           .insta-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>

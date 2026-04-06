@@ -240,11 +240,12 @@ export default function LocationsSection() {
         .phone-link:hover { opacity: 0.7; }
         @media (max-width: 1023px) {
           .contact-grid { grid-template-columns: 1fr 1fr !important; }
-          .contact-grid > div:last-child { border-left: none !important; }
+          .contact-grid > div:last-child { grid-column: 1 / -1 !important; }
         }
         @media (max-width: 767px) {
           .contact-grid { grid-template-columns: 1fr !important; }
-          .contact-grid > div { border-left: 1px solid #1A1A1A !important; }
+          .contact-grid > div { border-left: 1px solid #1A1A1A !important; border-top: none !important; }
+          .contact-grid > div:first-child { border-top: 1px solid #1A1A1A !important; }
         }
       `}</style>
     </section>

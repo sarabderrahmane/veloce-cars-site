@@ -13,6 +13,7 @@ export default function FounderSection() {
   return (
     <section
       id="processus"
+      className="process-section"
       style={{
         position: "relative",
         overflow: "hidden",
@@ -208,10 +209,13 @@ export default function FounderSection() {
         .step-card:hover { border-color: #2A2A2A !important; }
         .step-card:hover .step-line { transform: scaleX(1) !important; }
         @media (max-width: 1023px) {
+          .process-section { padding: 70px 0 !important; }
           .steps-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 767px) {
+          .process-section { padding: 50px 0 !important; }
           .steps-grid { grid-template-columns: 1fr !important; }
+          .step-card { padding: 28px 20px !important; }
         }
       `}</style>
     </section>

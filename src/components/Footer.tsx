@@ -265,10 +265,10 @@ export default function Footer() {
         .footer-link:hover { color: #D4AF37 !important; }
         .legal-link:hover { color: #D4AF37 !important; }
         @media (max-width: 1023px) {
-          .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .footer-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 40px !important; }
         }
         @media (max-width: 767px) {
-          .footer-grid { grid-template-columns: 1fr !important; }
+          .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
         }
       `}</style>
     </footer>

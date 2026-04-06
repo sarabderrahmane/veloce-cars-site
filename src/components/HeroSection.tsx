@@ -6,7 +6,7 @@ export default function HeroSection() {
       style={{
         position: "relative",
         height: "100svh",
-        minHeight: "700px",
+        minHeight: "600px",
         overflow: "hidden",
         backgroundColor: "#000",
         display: "flex",
@@ -60,6 +60,7 @@ export default function HeroSection() {
           position: "relative",
           zIndex: 10,
           maxWidth: "750px",
+          width: "100%",
           paddingLeft: "80px",
           paddingRight: "30px",
         }}
@@ -76,6 +77,7 @@ export default function HeroSection() {
         >
           <span style={{ display: "inline-block", width: "40px", height: "1px", background: "linear-gradient(to right, #D4AF37, #C5A059)" }} />
           <span
+            className="hero-eyebrow"
             style={{
               fontFamily: "var(--font-montserrat), Arial, sans-serif",
               fontSize: "11px",
@@ -130,6 +132,7 @@ export default function HeroSection() {
 
         {/* CTAs */}
         <div
+          className="hero-ctas"
           style={{
             display: "flex",
             gap: "16px",
@@ -209,7 +212,31 @@ export default function HeroSection() {
           .hero-content { padding-left: 40px !important; }
         }
         @media (max-width: 767px) {
-          .hero-content { padding-left: 24px !important; padding-right: 24px !important; }
+          .hero-content {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            max-width: 100% !important;
+          }
+          .hero-content h1 {
+            font-size: 26px !important;
+            word-break: break-word !important;
+          }
+          .hero-content .hero-eyebrow {
+            font-size: 9px !important;
+            letter-spacing: 0.15em !important;
+          }
+          .hero-content p {
+            font-size: 14px !important;
+          }
+          .hero-ctas {
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          .hero-ctas a {
+            width: 100% !important;
+            justify-content: center !important;
+            text-align: center !important;
+          }
         }
       `}</style>
     </section>
