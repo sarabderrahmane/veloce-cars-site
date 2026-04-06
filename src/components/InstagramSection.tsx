@@ -10,7 +10,7 @@ const posts = [
   { id: "insta-6", image: "/images/instagram/insta-6.jpg", alt: "Veloce Cars Draria" },
 ];
 
-const FACEBOOK_URL = "https://www.facebook.com/velocecars";
+const FACEBOOK_URL = "https://web.facebook.com/p/Veloce-cars-61570655235947/";
 
 export default function InstagramSection() {
   return (

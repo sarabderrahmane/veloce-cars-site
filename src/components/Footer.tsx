@@ -109,7 +109,7 @@ export default function Footer() {
               {/* Social */}
               <div style={{ display: "flex", gap: "10px" }}>
                 <Link
-                  href="https://www.facebook.com/velocecars"
+                  href="https://web.facebook.com/p/Veloce-cars-61570655235947/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
